@@ -1,4 +1,4 @@
-{{ define "main" }}
+{{ define "main" }}    
     {{ if .Menus }}
         <nav class="post-navigation">
         {{ range .Menus }}
@@ -10,7 +10,7 @@
     <article class="post h-entry">
         <div class="post-header">
             <header>
-                <h1 class="p-name post-title{{ if .Params.favorite }} favorite{{end}}{{ if .Params.draft }} draft{{end}}">{{ trim .Title  " " }}</h1>
+                <h1 class="p-name post-title{{ if .Params.favorite }} favorite{{end}}{{ if .Params.draft }} draft{{end}}">{{ trim .Title  " "}}</h1>
 
                 {{ partial "post-language-switcher.html" . }}
             </header>
@@ -39,5 +39,8 @@
 
     {{ if not .Params.disableComments }}
         {{ partial "comments.html" . }}
+    {{ end }}
+    {{ if or .Params.math .Site.Params.math }}
+        {{ partial "math.html" . }}
     {{ end }}
 {{ end }}
