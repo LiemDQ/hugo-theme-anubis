@@ -21,7 +21,7 @@
 
 /* Basic */
 html {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: 'Roboto', sans-serif;
     /* 1 */
     -ms-text-size-adjust: 100%;
     /* 2 */
@@ -31,7 +31,10 @@ html {
 
 body {
     margin: 0;
+    
     font-size: 18px;
+    font-family: 'Source Serif Pro', serif;
+    font-weight: 400;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     color: var(--font-color);
@@ -64,15 +67,20 @@ main {
 
 /* Headers */
 h1 {
-    font-size: 1.35em;
+    font-size: 1.6em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
 }
 
 h2 {
-    font-size: 1.2em;
+    font-size: 1.6em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
 }
 
 h3 {
     font-size: 1.1em;
+    font-weight: 500;
 }
 
 /* Links */
@@ -87,7 +95,7 @@ a:hover,
 a:focus,
 a:active {
     color: var(--link-state-color);
-    border-bottom: 1px solid var(--link-state-border-color);
+    /* border-bottom: 1px solid var(--link-state-border-color); */
 }
 
 a:active,
@@ -152,8 +160,8 @@ pre {
 code,
 pre,
 kbd {
-    color: var(--pre-color);
-    background-color: var(--pre-bg-color);
+    color: var(--code-fg-color);
+    background-color: var(--code-bg-color);
     font-family: monospace;
     font-size: 0.90em;
     line-height: 154%;
@@ -175,6 +183,7 @@ blockquote {
 p {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
+    font-weight: 400;    
 }
 
 hr {
@@ -188,6 +197,7 @@ hr {
 
 .common-header {
     padding-bottom: 1.5em;
+    font-weight: 700;
     border-bottom: thin solid var(--hr-color);
 }
 
@@ -196,16 +206,18 @@ header a {
 }
 
 header h1 {
-    font-size: 1em;
+    font-size: 1;
+    font-family: 'Roboto', sans-serif;
     margin-top: 1em;
     margin-bottom: 0;
-    font-weight: normal;
+    font-weight: 700;
 }
 
 header h2 {
     font-size: 1em;
+    font-family: 'Source Serif Pro', serif;
     margin: 0;
-    font-weight: normal;
+    font-weight: 500;
 }
 
 .header-top {
@@ -226,6 +238,7 @@ header nav:not(:empty){
     max-width: 100%;
     text-align: center;
     padding: 0.5em 0;
+    font-size: 20px;
 }
 
 header nav a {
@@ -269,10 +282,9 @@ header nav a {
 /* Pages */
 main h1 {
     margin-top: 1em;
-    font-weight: normal;
     line-height: 1.1em;
     margin-bottom: 0.5em;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .post-short-list:first-of-type {
@@ -316,6 +328,10 @@ main h1 {
 
 .post-short-list .post-title {
     display: inline;
+    font-size: 24px;
+    /* font-family: 'Roboto'; */
+    /* font-family: 'Roboto', 'sans-serif'; */
+    font-weight: 700;
 }
 
 .post-title.favorite::after {
@@ -342,10 +358,10 @@ article:not(:last-of-type) {
 }
 
 article header h1 {
-    font-size: 1.35em;
+    font-size: 1.9em;
     line-height: 1.1em;
     margin-bottom: 0.5em;
-    font-weight: 600;
+    font-weight: 700;
     display: inline;
 }
 
