@@ -79,8 +79,9 @@ h2 {
 }
 
 h3 {
-    font-size: 1.1em;
-    font-weight: 500;
+    font-size: 1.4em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
 }
 
 /* Links */
@@ -522,6 +523,11 @@ article figcaption {
     text-align: center;
     font-size: 0.85em;
     margin-bottom: 2em;
+}
+
+div.footnotes {
+    color: grey;
+    font-size: 0.90em;
 }
 
 .read-more {
