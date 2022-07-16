@@ -21,7 +21,7 @@
 
 /* Basic */
 html {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', 'Roboto', sans-serif;
     /* 1 */
     -ms-text-size-adjust: 100%;
     /* 2 */
@@ -68,20 +68,20 @@ main {
 /* Headers */
 h1 {
     font-size: 1.6em;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', 'Roboto', sans-serif;
     font-weight: 700;
 }
 
 h2 {
     font-size: 1.6em;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', 'Roboto', sans-serif;
     font-weight: 700;
 }
 
 h3 {
     font-size: 1.4em;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
+    font-family: 'Inter', 'Roboto', sans-serif;
+    font-weight: 600;
 }
 
 /* Links */
@@ -182,8 +182,8 @@ blockquote {
 }
 
 p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    margin-top: 1.0em;
+    margin-bottom: 1.0em;
     font-weight: 400;    
 }
 
@@ -208,7 +208,7 @@ header a {
 
 header h1 {
     font-size: 1;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', 'Roboto', sans-serif;
     margin-top: 1em;
     margin-bottom: 0;
     font-weight: 700;
@@ -216,8 +216,9 @@ header h1 {
 
 header h2 {
     font-size: 1em;
-    font-family: 'Source Serif Pro', serif;
+    font-family: 'Inter', 'Roboto', serif;
     margin: 0;
+    
     font-weight: 500;
 }
 
@@ -330,8 +331,8 @@ main h1 {
 .post-short-list .post-title {
     display: inline;
     font-size: 24px;
-    /* font-family: 'Roboto'; */
-    /* font-family: 'Roboto', 'sans-serif'; */
+    /* font-family: 'Inter', 'Roboto'; */
+    /* font-family: 'Inter', 'Roboto', 'sans-serif'; */
     font-weight: 700;
 }
 
