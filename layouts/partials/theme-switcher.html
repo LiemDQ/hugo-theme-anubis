@@ -3,10 +3,11 @@
     {{ $style = site.Params.style | lower }}
 {{ end }}
 
-{{ if not (in (slice "light-without-switcher" "dark-without-switcher" "auto-without-switcher") $style) }}
-    <button class="theme-switcher">
-        {{ partial "font-awesome.html" (dict "iconName" "moon" "custom" false) }}
-    </button>
+{{ if not (in (slice "light-without-switcher" "dark-without-switcher") $style) }}
+{{ if ne "auto-without-switcher" $style }}
+    <div class="theme-switcher">
+        {{ partial "font-awesome.html" (dict "iconName" "halfcircle" "custom" false) }}
+    </div>
 {{ end }}
 
 <script>
@@ -54,14 +55,6 @@ function detectCurrentScheme() {
         return 'dark'
     }
     return 'light'
-}
-
-function changeButtonText()
-{   
-    if (switchButton) {
-        switchButton.innerHTML = currentTheme == 'dark' ?  {{ partial "font-awesome.html" (dict "iconName" "sun" "custom" false) }} : {{ partial "font-awesome.html" (dict "iconName" "moon" "custom" false) }}
-
-    }
 }
 
 function switchTheme(e) {

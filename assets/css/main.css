@@ -1,6 +1,7 @@
 {{ $light := resources.Get "css/light.css" }}
 {{ $dark := resources.Get "css/dark.css" }}
 
+
 {{ $style := "light-without-switcher" }}
 {{ if and (isset site.Params "style") (ne site.Params.style "") }}
     {{ $style = site.Params.style | lower }}
@@ -715,7 +716,12 @@ ul.language-select > li, ul.footer-menu > li {
 }
 
 .theme-switcher {
-    cursor: pointer;
+    color: var(--switcher-color);
+    background: var(--switcher-bg-color);
+    padding: 0.5em 1em;
+    font-size: 16px;
+    border: none;
+    margin-bottom: 1em;
 }
 
 .theme-switcher-svg {
