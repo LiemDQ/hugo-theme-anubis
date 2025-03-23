@@ -1,8 +1,13 @@
-# Anubis Theme for Hugo [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) [![Netlify Status](https://api.netlify.com/api/v1/badges/7d9ea909-ad7e-4e47-b7c9-eefb7522d8c6/deploy-status)](https://app.netlify.com/sites/hugo-theme-anubis/deploys) [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/paypalme/mitrichius/1)
+# Anubis Theme for Hugo [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-Anubis is a simple minimalist theme for [Hugo blog engine](https://gohugo.io/).
+## ⚠️ Theme is no longer maintained
+Thank you all.  
+More info: https://mitrich.me/posts/anubis-closed/  
 
-[Demo](https://hugo-theme-anubis.netlify.app/)
+---
+
+Anubis is a simple minimalist theme for [Hugo blog engine](https://gohugo.io/).  
+[Demo](https://anubis.mitrich.me)
 
 ![Anubis Screenshot](https://raw.githubusercontent.com/mitrichius/hugo-theme-anubis/master/images/screenshot.png)
 
@@ -10,13 +15,16 @@ Anubis is a simple minimalist theme for [Hugo blog engine](https://gohugo.io/).
 
 - Dark mode (automatic / by switcher)
 - Pagination
-- Tags/Categories support
+- Multiple taxonomies: tags, categories, authors
+- Multiple sections: posts, notes, etc with customization
 - Archive
+- Table of Contents
 - Open Graph and Twitter Cards support
 - Mobile support
 - Social icons
 - Google Analytics
-- Comment systems: Disqus, ISSO, Utteranc.es, GraphComment
+- Umami Analytics
+- Comment systems: Disqus, ISSO, Utteranc.es, GraphComment, Giscus
 - RSS feeds
 - Related posts (Read Next section)
 - Deploy via Netlify (config included in example site)
@@ -35,11 +43,25 @@ Anubis is a simple minimalist theme for [Hugo blog engine](https://gohugo.io/).
 
 You need to install an extended version of Hugo to run this theme.
 
+### As Hugo Module (easier and recommended)
+
+Initiate a `hugo` module system from your project's root directory
+```shell
+hugo mod init github.com/<your_user>/<your_project>
+```
+
+Add the following to your `config.toml` or `config.yaml`
+```toml
+theme =  ["github.com/Mitrichius/hugo-theme-anubis"]
+```
+
+### As Git Submodule
+
 Inside the folder of your Hugo site run:
 
     $ git submodule add https://github.com/mitrichius/hugo-theme-anubis.git themes/anubis
 
-For more information read the official [setup guide](//gohugo.io/overview/installing/) of Hugo.
+For more information read the official [setup guide](https://gohugo.io/overview/installing/) of Hugo.
 
 ## Getting started
 After installing the theme successfully it requires a just a few more steps to get your site running.
@@ -81,11 +103,16 @@ params:
   dateFormat: "2006-01-02"
   paginationSinglePost: true
   style: light-without-switcher
+  mainSections: [ "posts" ] # which sections should be on index/main page
+  sectionsWithFullContentOnListPage: [ "notes" ] # for which sections content should be displayed on list pages
   readMore: false # show read more button
   readNextPosts: 5  # show 5 related posts, 0 by default
   disableSummary: false
+  toc: true # display Table of Contents
+  tocWordCount: 300 # ...when a post is longer than 300 words
   copyCodeButton: true # true by default
   rssAsSocialIcon: true
+  mathjax: false # https://www.mathjax.org/
   # utteranc.es support
   utterancesRepo: ""  # mandatory
   utterancesTheme: "" # optional
@@ -105,7 +132,19 @@ params:
     avatar: true # optional
     avatar-bg: "#f0f0f0" # optional
     feed: false # optional
+  UmamiAnalytics:
+    enabled: true # mandatory
+    dnt: true # optional
+    id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # mandatory
+    datacache: false # optional
+    url: "https://abc.example.com/umami.js" # mandatory
   graphcommentId: ""
+  # giscus support
+  GiscusRepo: "" # mandatory
+  GiscusRepoId: "" # mandatory
+  GiscusCategory: "Announcements" # mandatory
+  GiscusCategoryId: "" # mandatory
+  GiscusLazyLoad: false # optional
   webmentions:
     url: https://yourdomain.com/webemntions/receive
     login: hugo-theme-anubis
@@ -143,6 +182,15 @@ Options:
 - `dark` - dark theme by default, can be switched by user to light theme and back. Theme settings are saved for user 
 - `auto` - theme based on user system settings by default, can be switched by user to dark/light theme. Theme settings are saved for user (by default in example sites)
 
+### Table of Contents
+If `toc` param in `params` section of the config file is set to `true`,
+Table of Contents is generated for every post that is at least `tocWordCount`
+words long (`0` by default, also belongs to the `params` section of the config).
+
+This behavior can be overridden on per-post basis
+by setting `toc` to either `true` or `false` in the front matter of a post.
+
+
 ### Social icons
 #### Predefined icons
 To add icon from predefined list, add to `params.social` config:
@@ -155,6 +203,7 @@ Predefined list:
  - github
  - instagram
  - linkedin
+ - mastodon (need full url)
  - patreon
  - reddit
  - snapchat
@@ -174,7 +223,7 @@ Example:
 Config like this generate github icon with "https://github.com/gohugoio" url.
 
 #### Predefined icons with custom url
-To add prefedined icon with custom url, add to `params.social` config:
+To add predefined icon with custom url, add to `params.social` config:
 - id of social network
 - full url to your network  
 
@@ -209,7 +258,7 @@ Check config/example usage in [exampleSiteMultilingual](https://github.com/Mitri
 
 ### RSS 
 RSS is available by site url + /index.xml. Also available for specific language, section, taxonomy.  
-`rssAsSocialIcon` parameter enables rss sosial icon with link to site current language RSS.
+`rssAsSocialIcon` parameter enables rss social icon with link to site current language RSS.
 
 ### Robots.txt
 Based on environment.  
@@ -236,6 +285,10 @@ If you use webmention.io you can also enable pingback with `pingback: true`
 
 ### Disabling comments per-page basis
 Add `disableComments: true` to post front matter.
+
+## Custom shortcodes
+### Video (for local videofiles)
+Example: `{{< video src="/media/movie.mp4" type="video/mp4" preload="auto" caption="Some caption" alt="Some alt" >}}`
 
 ## Contributing
 
