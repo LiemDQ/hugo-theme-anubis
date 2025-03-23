@@ -1,22 +1,32 @@
 {{ $light := resources.Get "css/light.css" }}
 {{ $dark := resources.Get "css/dark.css" }}
 
-{{ $light.Content }}
+{{ $style := "light-without-switcher" }}
+{{ if and (isset site.Params "style") (ne site.Params.style "") }}
+    {{ $style = site.Params.style | lower }}
+{{ end }}
 
-{{ if eq site.Params.style "dark-without-switcher" }}
+{{ if eq $style "dark-without-switcher" }}
 :root {
     {{ $dark.Content }}
 }
-{{ else if eq site.Params.style "auto-without-switcher" }}
+
+{{ else }}
+
+{{ $light.Content }}
+
+{{ if eq $style "auto-without-switcher" }}
 @media (prefers-color-scheme: dark) {
     :root {
         {{ $dark.Content }}
     }
 }
-{{else }}
+{{ else if ne $style "light-without-switcher" }}
 [data-theme="dark"] {
     {{ $dark.Content }}
 }
+{{ end }}
+
 {{ end }}
 
 /* Basic */
@@ -151,11 +161,13 @@ th, td {
     border: 1px double var(--table-border-color);
 }
 
+
 /* Code */
 pre {
-    padding: 1em;
     max-width: 100%;
     overflow: auto;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 code,
@@ -228,9 +240,11 @@ header h2 {
     align-items: center;
     justify-content: space-between;
     vertical-align: middle;
+    margin-top: 1em;
 }
 
 .site-title {
+    display: inline;
     white-space: nowrap;
 }
 
@@ -250,8 +264,8 @@ header nav a {
 
 /* Social icons */
 .social-icons {
-    margin-top: 1em;
-    margin-bottom: 0;
+    display: inline;
+    margin: 1em 0 0 3em;
     padding: 0;
     list-style-type: none;
 }
@@ -291,6 +305,20 @@ main h1 {
 
 .post-short-list:first-of-type {
     margin-top: 1em;
+}
+
+.post-short-list img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+    margin: 0 auto .5em;
+}
+
+.post-short-list video {
+    max-width: 100%;
+    display: block;
+    height: auto;
+    margin: 0 auto .5em;
 }
 
 /* Articles */
@@ -512,6 +540,18 @@ article header h1 a {
     margin-right: 1em;
 }
 
+.post-authors {
+    display: inline;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.post-authors li {
+    display: inline;
+    margin-right: 1em;
+}
+
 article img {
     max-width: 100%;
     display: block;
@@ -529,6 +569,20 @@ article figcaption {
 div.footnotes {
     color: grey;
     font-size: 0.90em;
+}
+
+article video {
+  max-width: 100%;
+  display: block;
+  height: auto;
+  margin: 0 auto .5em;
+}
+
+code.has-jax {
+    -webkit-font-smoothing: antialiased;
+    background: inherit !important;
+    border: none !important;
+    font-size: 100%;
 }
 
 .read-more {
@@ -661,12 +715,11 @@ ul.language-select > li, ul.footer-menu > li {
 }
 
 .theme-switcher {
-    color: var(--switcher-color);
-    background: var(--switcher-bg-color);
-    padding: 0.5em 1em;
-    font-size: 16px;
-    border: none;
-    margin-bottom: 1em;
+    cursor: pointer;
+}
+
+.theme-switcher-svg {
+    fill: currentColor;
 }
 
 .h-card {

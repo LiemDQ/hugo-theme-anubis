@@ -20,6 +20,7 @@ readMore = false
 readNextPosts = 2
 copyCodeButton = true
 rssAsSocialIcon = true
+mathjax = false
 
 # Graphcomment support
 graphcommentId = ""
@@ -29,6 +30,13 @@ utterancesRepo = ""  # mandatory
 utterancesTheme = "" # optional
 utterancesIssue = "" # optional
 utterancesLabel = "" # optional
+
+# Giscus support
+GiscusRepo = ""  # mandatory
+GiscusRepoId = ""  # mandatory
+GiscusCategory = "Announcements" # mandatory
+GiscusCategoryId = ""  # mandatory
+GiscusLazyLoad = false  # optional
 
 [[params.social]]
 id = "docs"
