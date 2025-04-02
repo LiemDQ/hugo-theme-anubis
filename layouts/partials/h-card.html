@@ -1,10 +1,10 @@
 <p class="h-card vcard">
 
-    <a href={{ .Site.BaseURL }} class="p-name u-url url fn" rel="me">{{ .Site.Params.author }}</a> 
+    <a href={{ .Site.BaseURL }} class="p-name u-url url fn" rel="me">{{ .Site.Params.author.name }}</a> 
 
-    {{ if .Site.Params.email }} 
+    {{ if .Site.Params.author.email }} 
         /
-        <a class="p-email u-email email" rel="me" href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>
+        <a class="p-email u-email email" rel="me" href="mailto:{{ .Site.Params.author.email }}">{{ .Site.Params.author.email }}</a>
     {{ end }}
 
     {{ if .Site.Params.avatar }} 
