@@ -1,6 +1,6 @@
 /* dark.css */ 
---font-color: #eee;
---bg-color: #212121;
+--font-color: #ddd;
+--bg-color: #151515;
 
 --link-color:#599ada;
 --link-state-color:#ff5858;
@@ -27,8 +27,8 @@
 
 --post-info-color: grey;
 
---switcher-color: #fff;
---switcher-bg-color: #212121;
+--switcher-color: #ddd;
+--switcher-bg-color: #151515;
 
 --svg-color: #ccc;
 --svg-state-color:#ff5858;

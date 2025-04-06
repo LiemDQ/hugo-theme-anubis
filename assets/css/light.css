@@ -1,7 +1,7 @@
 :root {
    /* light.css */ 
     --font-color: #333;
-    --bg-color: #fff;
+    --bg-color: #fffff8;
 
     --link-color:#1d60a3;
     --link-state-color:#a31d1d;
@@ -28,7 +28,7 @@
     --post-info-color: grey;
 
     --switcher-color: #333;
-    --switcher-bg-color: #fff; 
+    --switcher-bg-color: #fffff8; 
 
     --svg-color: #333;
     --svg-state-color: #a31d1d;
