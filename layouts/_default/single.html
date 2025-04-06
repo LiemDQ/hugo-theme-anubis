@@ -15,11 +15,17 @@
                 {{ partial "post-language-switcher.html" . }}
             </header>
         </div>
+        {{ if .Site.Params.enableSideNotes | default true }}
+            <!-- {{ partial "resource.html" (dict "context" . "type" "js" "filename" "js/sidenotes.js") }} -->
+            {{ partial "resource.html" (dict "context" . "type" "js" "filename" "js/main.js") }}
+        {{ end }}
+        <div id="content">
         {{ partial "toc.html" .}}
-        <div class="content e-content">
+ 
             {{ .Content }}
-        </div>
+
         {{ partial "post-info.html" . }}
+        </div>
     </article>
 
     {{ if gt .Site.Params.readNextPosts 0 }}
