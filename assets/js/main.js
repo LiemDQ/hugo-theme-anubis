@@ -1,4 +1,4 @@
-const ARTICLE_CONTENT_SELECTOR = "article#main";
+const ARTICLE_CONTENT_SELECTOR = "div#content";
 const FOOTNOTE_SECTION_SELECTOR = "div.footnotes[role=doc-endnotes]";
 // this is a prefix-match on ID.
 const INDIVIDUAL_FOOTNOTE_SELECTOR = "li[id^='fn:']";
@@ -115,10 +115,11 @@ function updateFootnoteFloat(isFloating) {
     const footnotes = footnoteSection.querySelectorAll(INDIVIDUAL_FOOTNOTE_SELECTOR);
     
     // Do this first because we need styles applied before doing other
-    // calculations
+    // calculations. 
     footnoteSection.classList.add('floating-footnotes');
     let shouldFloat = isMarginWideEnough(footnoteSection);
     
+    //If window is wide enough, float. 
     if (shouldFloat) {
         setFootnoteOffsets(footnotes);
         subscribeToUpdates();
@@ -133,6 +134,9 @@ function subscribeToUpdates() {
     const article = document.querySelector(ARTICLE_CONTENT_SELECTOR);
     // Watch for dimension changes on the thing that holds all the footnotes so
     // we can reposition as required
+    if (article === null) {
+        console.log("ERROR: ", ARTICLE_CONTENT_SELECTOR, " is not a valid query for the observer." );
+    }
     resizeObserver.observe(article);
 }
 
@@ -147,7 +151,7 @@ const notifySizeChange = function() {
 
     return function () {
         // Pixel width at which this looks good
-        updateFootnoteFloat();
+        updateFootnoteFloat(isFloating);
     };
 }();
 
